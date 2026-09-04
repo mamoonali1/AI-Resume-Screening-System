@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Screener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI-Powered Resume Screener</h1>
+            <p class="subtitle">Screen, filter, and analyze candidate profiles instantly using Llama 3</p>
+        </header>
+
+        <form id="screenForm">
+            <div class="row">
+                <div class="col main-inputs">
+                    <div class="form-group">
+                        <label for="resumes">Upload Resumes (PDF / DOCX)</label>
+                        <div class="file-drop-zone">
+                            <input type="file" id="resumes" name="resumes" multiple accept=".pdf,.docx" required>
+                            <p class="file-hint">Click to select or drag files here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job_description">Job Description</label>
+                        <textarea id="job_description" name="job_description" rows="9" placeholder="Paste the target job requirements and responsibilities here..." required></textarea>
+                    </div>
+                </div>
+                
+                <div class="col filters-box">
+                    <h3>Screening Parameters</h3>
+                    
+                    <div class="form-group">
+                        <label for="filter_education">Minimum Education Target</label>
+                        <select id="filter_education" name="filter_education">
+                            <option value="">Any Education Level</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Bachelor's">Bachelor's</option>
+                            <option value="Master's">Master's</option>
+                            <option value="PhD">PhD</option>
+                        </select>
+                    </div>
+
+                    <div class="range-group">
+                        <div class="form-group">
+                            <label for="filter_min_exp">Min Exp (Yrs)</label>
+                            <input type="number" id="filter_min_exp" name="filter_min_exp" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter_max_exp">Max Exp (Yrs)</label>
+                            <input type="number" id="filter_max_exp" name="filter_max_exp" min="0" placeholder="15+">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filter_universities">Target Universities</label>
+                        <input type="text" id="filter_universities" name="filter_universities" placeholder="e.g., NUST, FAST, FAST-NU (Comma separated)">
+                    </div>
+                    
+                    <div class="scale-group">
+                        <div class="scale-header">
+                            <label for="scale">Shortlist Scale Target</label>
+                            <span class="scale-badge"><span id="scaleVal">50</span>% of total</span>
+                        </div>
+                        <input type="range" id="scale" name="scale" min="1" max="100" value="50">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn">Execute Screening Pipeline</button>
+        </form>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing profiles via Llama-3-70B... Please wait.</p>
+        </div>
+
+        <div id="results" class="hidden">
+            <h2>Shortlisted Candidates</h2>
+            <div id="candidatesList"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

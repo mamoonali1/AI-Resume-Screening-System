@@ -1,0 +1,116 @@
+:root {
+    --bg-color: #f8fafc;
+    --card-color: #ffffff;
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-color: #e2e8f0;
+    --accent-bg: #f1f5f9;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 30px 20px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--card-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+header { margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+h1 { font-size: 28px; font-weight: 800; color: #1e1b4b; margin: 0 0 6px 0; }
+.subtitle { color: var(--text-muted); margin: 0; font-size: 15px; }
+h2 { font-size: 22px; color: #1e1b4b; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid var(--accent-bg); padding-bottom: 8px;}
+h3 { font-size: 18px; color: #1e1b4b; margin: 0 0 20px 0; }
+
+.row { display: flex; gap: 35px; flex-wrap: wrap; margin-bottom: 25px; }
+.col { flex: 1; min-width: 320px; }
+
+.form-group { margin-bottom: 20px; }
+label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #334155; }
+
+input[type="text"], input[type="number"], select, textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--border-color);
+    border-radius: 8px; box-sizing: border-box; font-size: 14px;
+    transition: all 0.2s; background-color: #fff;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* File Upload Area */
+.file-drop-zone {
+    border: 2px dashed #cbd5e1; padding: 20px; border-radius: 8px;
+    text-align: center; position: relative; background: #fbfbfb; cursor: pointer;
+}
+.file-drop-zone:hover { border-color: var(--primary-color); background: #f5f3ff; }
+.file-drop-zone input[type="file"] {
+    position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
+}
+.file-hint { margin: 0; font-size: 14px; color: var(--text-muted); pointer-events: none; }
+
+.filters-box { background: var(--accent-bg); padding: 25px; border-radius: 10px; border: 1px solid var(--border-color); }
+.range-group { display: flex; gap: 15px; }
+.range-group .form-group { flex: 1; }
+
+/* Scale Slider UI */
+.scale-group { margin-top: 25px; background: #fff; padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); }
+.scale-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.scale-header label { margin: 0; }
+.scale-badge { background: #e0e7ff; color: #3730a3; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 20px; }
+input[type="range"] { width: 100%; margin: 10px 0; cursor: pointer; }
+
+button[type="submit"] {
+    width: 100%; background: var(--primary-color); color: white; border: none;
+    padding: 16px; font-size: 16px; font-weight: 700; border-radius: 8px;
+    cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 10px;
+}
+button[type="submit"]:hover { background: var(--primary-hover); }
+button[type="submit"]:active { transform: scale(0.99); }
+
+/* Loading States */
+#loading { padding: 40px; text-align: center; color: var(--primary-color); font-weight: 600; }
+.spinner {
+    width: 40px; height: 40px; border: 4px solid #e2e8f0; border-top: 4px solid var(--primary-color);
+    border-radius: 50%; margin: 0 auto 15px; animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.hidden { display: none !important; }
+
+/* Candidate Card UI improvements */
+.candidate-card {
+    background: #fff; border: 1px solid var(--border-color);
+    padding: 22px; margin-bottom: 20px; border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.candidate-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+.cand-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.cand-name { font-size: 18px; font-weight: 700; color: #1e293b; }
+.score-badge { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 15px; }
+
+.meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 15px; background: #f8fafc; padding: 12px; border-radius: 6px; font-size: 13px; color: var(--text-muted); }
+.meta-grid span strong { color: #334155; }
+
+.justification-box { font-size: 14px; color: #475569; background: #fffcf0; border-left: 3px solid #eab308; padding: 10px 14px; margin-bottom: 18px; border-radius: 0 6px 6px 0; }
+
+/* View & Download Buttons Layout */
+.action-group { display: flex; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+.btn-action {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 6px;
+    cursor: pointer; text-decoration: none; transition: background 0.2s; border: 1px solid #cbd5e1;
+}
+.btn-view { background: #fff; color: #334155; }
+.btn-view:hover { background: #f8fafc; border-color: #94a3b8; }
+.btn-download { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+.btn-download:hover { background: #4338ca; }
